@@ -13,7 +13,7 @@ modifiedOn: 2015-02-01
 
 ```js
 
-var sentence = "This is one sentence. This is a sentence with a List of items: cherries,orange,apples,bananas.";
+var sItem = "This is a List of items: cherries,orange,apples,bananas.";
 
 ```
 
@@ -22,11 +22,26 @@ var sentence = "This is one sentence. This is a sentence with a List of items: c
 
 ```js
 
-var sentence = "This is one sentence. This is a sentence with a List of items: cherries,orange,apples,bananas.";
+var sItem = "This is a List of items: cherries,orange,apples,bananas.";
 
-var start = sentence.indexOf(":");
-var end = sentence.indexOf(".",start+1);
+var start = sItem.indexOf(":");
+var end = sItem.indexOf(".",start+1);
 
-var list = sentence.substring(start+1,end);
+var list = sItem.substring(start+1,end);
+
+```
+### 检查一个存在的、非空的字符串
+
+** 问题 **
+想要检查一个已经定义的变量，是一个字符串，并且它不为空
+
+** 解决方案 **
+使用typeOf运算符，valueOf方法以及String的length属性来创建一个条件检测，以确保一个变量是存在的，是一个字符串，并且不为空。
+
+```js
+
+if((typeof names != 'undefined') && (typeof names.valueOf() == 'string') && names.length > 0){
+	...
+}
 
 ```
