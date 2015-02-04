@@ -1,8 +1,14 @@
 {
-  "name": "project-name",
-  "description": "project created by thinkjs",
+  "name": "javascriptCase",
+  "description": "收集整理常见的js使用实例",
   "version": "0.1.0",
   "author": {},
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-watch": "*"
+  },
   "dependencies": {
     "marked": "^0.3.3",
     "thinkjs": "*"
