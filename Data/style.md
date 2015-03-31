@@ -36,3 +36,48 @@ modifiedOn: 2015-02-01
 	}
 	console.log(getStyleProperty("transform"));
 ```
+### 原生实现hasClass,addClass,removeClass,toggleClass?
+
+```js
+	var domClass = function(){
+		var classReg = function(className){
+			return new RegExp("(^|\\s+)"+className+"(\\s+|$)");
+		}
+		var hasClass,addClass,removeClass;
+		if ("classList" in document.documentElement) {
+			hasClass = function (el,cls) {
+				return el.classList.contains(cls);
+			};
+			addClass = function (el,cls) {
+				el.classList.add(cls);
+			};
+			removeClass = function (el,cls) {
+				el.classList.remove(cls);
+			};
+		}else{
+			hasClass = function (el,cls) {
+				return classReg(cls).test(el.className);
+			};
+			addClass = function(el,cls) {
+				if(!hasClass(el,cls)){
+					el.className = el.className + " " + cls;
+				}
+			};
+			removeClass = function (el,cls) {
+				el.className = el.className.replace(classReg(cls),"");
+			};
+		};
+		function toggleClass(el,cls){
+			var fn = hasClass(el.cls) ? removeClass : addClass;
+			fn(el,cls);
+		};
+
+		return {
+			has : hasClass,
+			add : addClass,
+			remove : removeClass,
+			toggle : toggleClass
+		}
+	}();
+	console.log(domClass.has);
+```
